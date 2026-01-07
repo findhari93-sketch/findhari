@@ -1,9 +1,10 @@
 // src/App.js
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Container } from "@mui/material"; // ✅ import MUI Container
+import { Box } from "@mui/material";
 import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
 import TopCurve from "./components/TopCurve/TopCurve";
+import { Home } from "./pages/Home/Home";
+import CompDesign from "./pages/ComponentsDesign/CompDesign";
 // Placeholder components for routing
 const Startup = () => <div style={style}>StartUp Page</div>;
 const AboutMe = () => <div style={style}>About Me</div>;
@@ -26,11 +27,11 @@ const style = {
 function App() {
   return (
     <Router>
-      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
+      <Box>
         <TopCurve />
         <Navbar />
         <Routes>
-          <Route path="/" element={<Hero />} />
+          <Route path="/" element={<Home />} />
           <Route path="/startup" element={<Startup />} />
           <Route path="/about-me" element={<AboutMe />} />
           <Route path="/skills" element={<Skills />} />
@@ -39,8 +40,9 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/compdesign" element={<CompDesign />} />
         </Routes>
-      </Container>
+      </Box>
     </Router>
   );
 }
