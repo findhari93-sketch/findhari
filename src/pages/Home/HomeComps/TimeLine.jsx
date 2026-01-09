@@ -1,6 +1,5 @@
 import { Box, Divider, Typography } from "@mui/material";
 import React from "react";
-import EmploymentCard from "./EmploymentCard/EmploymentCard";
 import EmploymentTimeline from "./EmploymentTimeline/EmpTimeline";
 
 const TimeLine = () => {
@@ -17,23 +16,53 @@ const TimeLine = () => {
     >
       <Box
         sx={{
+          width: "100%",
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          paddingTop: "5rem",
+          justifyContent: "center",
+          pt: { xs: 4, md: 5 },
+          px: { xs: 2, md: 3 },
         }}
       >
-        <Typography variant="sectionTitle">lifeTime</Typography>
-        <Typography variant="sectionTitle">- Line</Typography>
-        <Divider
+        <Box
           sx={{
             width: "100%",
-            borderColor: "white",
-            mt: 1,
+            maxWidth: "1000px",
+            textAlign: "center",
           }}
-        />
+        >
+          <Typography
+            sx={{
+              fontFamily: "Roboto, sans-serif",
+              textTransform: "uppercase",
+              letterSpacing: { xs: "4px", md: "6px" },
+              fontSize: { xs: "24px", md: "28px" },
+              fontWeight: 500,
+              color: "#333",
+            }}
+          >
+            LifeTime
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily: "Roboto, sans-serif",
+              textTransform: "uppercase",
+              letterSpacing: { xs: "4px", md: "6px" },
+              fontSize: { xs: "24px", md: "28px" },
+              fontWeight: 500,
+              color: "#333",
+            }}
+          >
+            - Line
+          </Typography>
+          <Divider
+            sx={{
+              borderColor: "rgba(0,0,0,0.1)",
+              mt: 1.5,
+            }}
+          />
+        </Box>
       </Box>
-      <Box sx={{ paddingBottom: "8rem" }}>
+      <Box sx={{ pb: { xs: 6, md: 8 } }}>
         <EmploymentTimeline />
       </Box>
       {/* <Box sx={{ paddingBottom: "12rem" }}>
@@ -49,8 +78,7 @@ const TimeLine = () => {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 180"
-        className="position-absolute"
-        style={{ bottom: 0 }}
+        style={{ position: "absolute", bottom: 0, width: "100%" }}
       >
         <path
           fill="#fff"

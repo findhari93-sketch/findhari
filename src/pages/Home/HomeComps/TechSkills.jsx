@@ -8,8 +8,6 @@ const gradientAnimation = keyframes`
   100% { background-position: 0% 50%; }
 `;
 
-const lightGreyText = { color: "rgb(153, 153, 153)" };
-
 const TechSkills = () => {
   const gradientTextStyle = {
     background: "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
@@ -18,143 +16,178 @@ const TechSkills = () => {
     WebkitTextFillColor: "transparent",
     animation: `${gradientAnimation} 7s ease infinite`,
   };
+
+  const categoryStyle = {
+    fontFamily: "Roboto, sans-serif",
+    fontSize: { xs: "11px", md: "12px" },
+    color: "rgb(153, 153, 153)",
+    textTransform: "uppercase",
+    letterSpacing: "1px",
+    mb: 0.5,
+  };
+
+  const skillStyle = {
+    fontFamily: "Kalam, cursive",
+    fontSize: { xs: "14px", md: "16px" },
+    lineHeight: 1.7,
+    color: "#333",
+  };
+
   return (
-    <section id="Skills" style={{}}>
+    <section id="Skills">
       <Box sx={{ backgroundColor: "#fff" }}>
+        {/* Centered Container */}
         <Box
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            padding: "0 5rem",
+            width: "100%",
+            maxWidth: "1000px",
+            mx: "auto",
+            px: { xs: 2, md: 3 },
+            py: { xs: 4, md: 5 },
           }}
         >
-          <Typography variant="sectionTitle" sx={gradientTextStyle}>
-            Tech
-          </Typography>
-          <Typography variant="sectionTitle" sx={gradientTextStyle}>
-            - Skills
-          </Typography>
-          <Divider
+          {/* Title */}
+          <Box sx={{ textAlign: "center", mb: 2 }}>
+            <Typography
+              sx={{
+                fontFamily: "Roboto, sans-serif",
+                textTransform: "uppercase",
+                letterSpacing: { xs: "4px", md: "6px" },
+                fontSize: { xs: "24px", md: "28px" },
+                fontWeight: 500,
+                ...gradientTextStyle,
+              }}
+            >
+              Tech
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: "Roboto, sans-serif",
+                textTransform: "uppercase",
+                letterSpacing: { xs: "4px", md: "6px" },
+                fontSize: { xs: "24px", md: "28px" },
+                fontWeight: 500,
+                ...gradientTextStyle,
+              }}
+            >
+              - Skills
+            </Typography>
+          </Box>
+
+          <Divider sx={{ borderColor: "rgba(0,0,0,0.1)", mb: { xs: 3, md: 4 } }} />
+
+          {/* Intro Description */}
+          <Box sx={{ mb: { xs: 3, md: 4 } }}>
+            <Typography
+              sx={{
+                fontFamily: "Kalam, cursive",
+                fontSize: { xs: "16px", md: "18px" },
+                lineHeight: 1.7,
+                color: "#333",
+                textAlign: "left",
+              }}
+            >
+              I'm a building architect turned web developer. Architecture major
+              from NIT Trichy. I combine design thinking with technical
+              implementation.
+            </Typography>
+          </Box>
+
+          {/* Skills Grid */}
+          <Box
             sx={{
-              width: "100%",
-              borderColor: "white",
-              mt: 1,
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              gap: { xs: 3, md: 4 },
+              alignItems: "flex-start",
             }}
-          />
-        </Box>
-        {/* Description */}
-        <Box sx={{ padding: "0 5rem" }}>
-          <Typography
-            variant="sectionContent"
-            sx={{ width: "15rem", textAlign: "right" }}
           >
-            I’m a building architect turned Web design developer. I have an
-            architecture major from NIT Trichy, one of the prestigious
-            universities in India. SInce i also have interest in teaching I
-            worked as a guest lecturer in CARE Design school as part-time &
-            study-resource digital content creator for neramClasses.com
-          </Typography>
-        </Box>
-        <br />
-        <br />
-        <Box className="container">
-          <div className="row">
-            {/* text content */}
-            <Box className="col text-end">
-              <Box className="d-flex flex-column gap-3">
-                <Typography
-                  variant="body1"
-                  fontWeight="bold"
-                  sx={{ paddingBottom: "1.5rem" }}
-                >
-                  Things <br />
-                  <Box
-                    component="span"
-                    className="colour-text"
-                    sx={gradientTextStyle}
-                  >
-                    iLearned
+            {/* Skills List */}
+            <Box
+              sx={{
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+                gap: { xs: 2, md: 2.5 },
+                textAlign: { xs: "center", md: "right" },
+              }}
+            >
+              <Box>
+                <Typography sx={{ ...skillStyle, fontWeight: 600, mb: 1 }}>
+                  Things{" "}
+                  <Box component="span" sx={gradientTextStyle}>
+                    I Learned
                   </Box>
                 </Typography>
+              </Box>
 
-                <Typography variant="body1">
-                  <Box component="span" sx={lightGreyText}>
-                    Development
-                  </Box>
-                  <br />
-                  HTML, CSS (SASS), JavaScript/ES6
+              <Box>
+                <Typography sx={categoryStyle}>Development</Typography>
+                <Typography sx={skillStyle}>
+                  React, TypeScript, JavaScript/ES6, HTML, CSS/SASS
                 </Typography>
+              </Box>
 
-                <Typography variant="body1">
-                  <Box component="span" sx={lightGreyText}>
-                    Adobe
-                  </Box>
-                  <br />
-                  XD, Photoshop, Illustrator, Indesign, Premier-pro, After
-                  Effects
+              <Box>
+                <Typography sx={categoryStyle}>Design Tools</Typography>
+                <Typography sx={skillStyle}>
+                  Figma, Adobe XD, Photoshop, Illustrator
                 </Typography>
+              </Box>
 
-                <Typography variant="body1">
-                  <Box component="span" sx={lightGreyText}>
-                    Autodesk
-                  </Box>
-                  <br />
-                  Sketchbook, AutoCAD, Revit Architecture
+              <Box>
+                <Typography sx={categoryStyle}>Backend & DB</Typography>
+                <Typography sx={skillStyle}>
+                  Firebase, Supabase, MongoDB, Node.js
                 </Typography>
+              </Box>
 
-                <Typography variant="body1">
-                  <Box component="span" sx={lightGreyText}>
-                    Other
-                  </Box>
-                  <br />
-                  Figma, Blender, Lumion, Vray, Rhino, SketchUP, WordPress
+              <Box>
+                <Typography sx={categoryStyle}>Architecture</Typography>
+                <Typography sx={skillStyle}>
+                  AutoCAD, Revit, SketchUp, Lumion, Blender
                 </Typography>
+              </Box>
 
-                <Typography variant="body1">
-                  <Box component="span" sx={lightGreyText}>
-                    Digital Marketing
-                  </Box>
-                  <br />
-                  Content Creation, SEO & SEM, Google & Facebook ADS, Analytics,
-                  Youtube, Instagram, Linkedin etc
+              <Box>
+                <Typography sx={categoryStyle}>Other</Typography>
+                <Typography sx={skillStyle}>
+                  Git, Storybook, CI/CD, SEO, Content Creation
                 </Typography>
+              </Box>
 
-                <Typography variant="body1">
-                  <Box component="span" sx={lightGreyText}>
-                    Hobby
-                  </Box>
-                  <br />
-                  FreeHand & Digital Artist, Photography, Chess
-                </Typography>
-
-                <Typography
-                  variant="body1"
-                  fontWeight="bold"
-                  sx={{ paddingTop: "2rem" }}
-                >
-                  Things I wish to learn
-                  <br />
-                  <Box
-                    component="span"
-                    className="colour-text"
-                    sx={gradientTextStyle}
-                  >
-                    FullStack Development
+              <Box sx={{ mt: 1 }}>
+                <Typography sx={{ ...skillStyle, fontWeight: 600 }}>
+                  Currently Learning{" "}
+                  <Box component="span" sx={gradientTextStyle}>
+                    Full Stack
                   </Box>
                 </Typography>
               </Box>
             </Box>
-            <div className="col">
+
+            {/* Animation */}
+            <Box
+              sx={{
+                flex: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                minHeight: { xs: "180px", md: "250px" },
+                order: { xs: -1, md: 0 },
+              }}
+            >
               <LucaEyeAnimation />
-            </div>
-          </div>
+            </Box>
+          </Box>
         </Box>
       </Box>
+
+      {/* Wave SVG */}
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
         <path
           fill="#ffffff"
-          fill-opacity="1"
+          fillOpacity="1"
           d="M0,32L80,58.7C160,85,320,139,480,170.7C640,203,800,213,960,202.7C1120,192,1280,160,1360,144L1440,128L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
         ></path>
       </svg>

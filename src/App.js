@@ -1,28 +1,118 @@
 // src/App.js
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import TopCurve from "./components/TopCurve/TopCurve";
 import { Home } from "./pages/Home/Home";
 import CompDesign from "./pages/ComponentsDesign/CompDesign";
-// Placeholder components for routing
-const Startup = () => <div style={style}>StartUp Page</div>;
-const AboutMe = () => <div style={style}>About Me</div>;
-const Skills = () => <div style={style}>Skills Page</div>;
-const In = () => <div style={style}>In Page</div>;
-const Experience = () => <div style={style}>Experience Page</div>;
-const Contact = () => <div style={style}>Contact Page</div>;
-const Resume = () => <div style={style}>Resume Page</div>;
-const Portfolio = () => <div style={style}>Portfolio Page</div>;
 
-const style = {
+// Placeholder styles
+const placeholderStyle = {
   minHeight: "80vh",
   display: "flex",
+  flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  fontSize: "2rem",
+  padding: "2rem",
   color: "#fff",
+  textAlign: "center",
 };
+
+// Work Page Placeholder
+const Work = () => (
+  <Box sx={placeholderStyle}>
+    <Typography variant="sectionTitle" sx={{ mb: 3 }}>
+      Work
+    </Typography>
+    <Typography variant="sectionContent" sx={{ mb: 4, maxWidth: "600px" }}>
+      Case studies and projects coming soon. Check out the featured work on the homepage!
+    </Typography>
+    <Link to="/" style={{ textDecoration: "none" }}>
+      <Button variant="outlined" sx={{ color: "#fff", borderColor: "#fff" }}>
+        Back to Home
+      </Button>
+    </Link>
+  </Box>
+);
+
+// About Page Placeholder
+const About = () => (
+  <Box sx={placeholderStyle}>
+    <Typography variant="sectionTitle" sx={{ mb: 3 }}>
+      About
+    </Typography>
+    <Typography variant="sectionContent" sx={{ mb: 4, maxWidth: "600px" }}>
+      Strategic UX Engineer with 8+ years bridging design and engineering.
+      Full about page coming soon!
+    </Typography>
+    <Link to="/" style={{ textDecoration: "none" }}>
+      <Button variant="outlined" sx={{ color: "#fff", borderColor: "#fff" }}>
+        Back to Home
+      </Button>
+    </Link>
+  </Box>
+);
+
+// Resume Page Placeholder
+const Resume = () => (
+  <Box sx={placeholderStyle}>
+    <Typography variant="sectionTitle" sx={{ mb: 3 }}>
+      Resume
+    </Typography>
+    <Typography variant="sectionContent" sx={{ mb: 4, maxWidth: "600px" }}>
+      Interactive resume and downloadable PDF coming soon!
+    </Typography>
+    <Link to="/" style={{ textDecoration: "none" }}>
+      <Button variant="outlined" sx={{ color: "#fff", borderColor: "#fff" }}>
+        Back to Home
+      </Button>
+    </Link>
+  </Box>
+);
+
+// Contact Page Placeholder
+const Contact = () => (
+  <Box sx={placeholderStyle}>
+    <Typography variant="sectionTitle" sx={{ mb: 3 }}>
+      Contact
+    </Typography>
+    <Typography variant="sectionContent" sx={{ mb: 2, maxWidth: "600px" }}>
+      Let's connect! Contact form coming soon.
+    </Typography>
+    <Typography
+      sx={{
+        fontFamily: "Roboto, sans-serif",
+        fontSize: "18px",
+        mb: 4,
+      }}
+    >
+      Email: findhari93@gmail.com
+    </Typography>
+    <Link to="/" style={{ textDecoration: "none" }}>
+      <Button variant="outlined" sx={{ color: "#fff", borderColor: "#fff" }}>
+        Back to Home
+      </Button>
+    </Link>
+  </Box>
+);
+
+// Case Study Placeholder
+const CaseStudy = () => (
+  <Box sx={placeholderStyle}>
+    <Typography variant="sectionTitle" sx={{ mb: 3 }}>
+      Case Study
+    </Typography>
+    <Typography variant="sectionContent" sx={{ mb: 4, maxWidth: "600px" }}>
+      Detailed case study content coming soon!
+    </Typography>
+    <Link to="/work" style={{ textDecoration: "none" }}>
+      <Button variant="outlined" sx={{ color: "#fff", borderColor: "#fff" }}>
+        Back to Work
+      </Button>
+    </Link>
+  </Box>
+);
 
 function App() {
   return (
@@ -31,15 +121,15 @@ function App() {
         <TopCurve />
         <Navbar />
         <Routes>
+          {/* Main Pages */}
           <Route path="/" element={<Home />} />
-          <Route path="/startup" element={<Startup />} />
-          <Route path="/about-me" element={<AboutMe />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/in" element={<In />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/work/:slug" element={<CaseStudy />} />
+          <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/contact" element={<Contact />} />
+
+          {/* Legacy/Utility Routes */}
           <Route path="/compdesign" element={<CompDesign />} />
         </Routes>
       </Box>

@@ -2,10 +2,8 @@ import React from "react";
 import {
   Box,
   Typography,
-  Grid,
   Link as MuiLink,
   Divider,
-  useTheme,
 } from "@mui/material";
 import {
   Facebook,
@@ -56,26 +54,30 @@ const socials = [
 ];
 
 const Footer = () => {
-  const theme = useTheme();
-
   return (
     <Box
       component="footer"
       sx={{
         position: "relative",
         bgcolor: "#fff",
-        pt: 8,
+        pt: { xs: 6, md: 8 },
         bottom: "-30px",
       }}
     >
       {/* Social Icons */}
-      <Grid
-        container
-        justifyContent="center"
-        sx={{ zIndex: 0, position: "relative", top: "13px" }}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          gap: { xs: 2, md: 3 },
+          position: "relative",
+          top: "13px",
+          zIndex: 0,
+          px: { xs: 2, md: 3 },
+        }}
       >
         {/* Left group */}
-        <Grid item sx={{ display: "flex", gap: 2, paddingRight: "7rem" }}>
+        <Box sx={{ display: "flex", gap: { xs: 1.5, md: 2 }, pr: { xs: 3, md: 6 } }}>
           {socials.slice(0, 3).map((social, index) => {
             const color = getBrandColor(social.icon);
             return (
@@ -115,10 +117,10 @@ const Footer = () => {
               </MuiLink>
             );
           })}
-        </Grid>
+        </Box>
 
         {/* Right group */}
-        <Grid item sx={{ display: "flex", gap: 2, paddingLeft: "7rem" }}>
+        <Box sx={{ display: "flex", gap: { xs: 1.5, md: 2 }, pl: { xs: 3, md: 6 } }}>
           {socials.slice(3).map((social, index) => {
             const color = getBrandColor(social.icon);
             return (
@@ -158,8 +160,8 @@ const Footer = () => {
               </MuiLink>
             );
           })}
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
 
       {/* Center Image */}
       <Box
@@ -167,10 +169,10 @@ const Footer = () => {
         src={lucaStand}
         alt="Luca"
         sx={{
-          width: "165px",
+          width: { xs: "120px", md: "150px" },
           position: "absolute",
-          top: "-159px",
-          left: "49%",
+          top: { xs: "-120px", md: "-145px" },
+          left: "50%",
           transform: "translateX(-50%)",
           zIndex: 0,
         }}
@@ -187,12 +189,14 @@ const Footer = () => {
         }}
       >
         {/* Description */}
-        <Box sx={{ textAlign: "center", pt: 4, px: 2 }}>
+        <Box sx={{ textAlign: "center", pt: { xs: 3, md: 4 }, px: { xs: 2, md: 3 } }}>
           <Typography
-            variant="sectionContent"
             sx={{
+              fontFamily: "Kalam, cursive",
+              fontSize: { xs: "14px", md: "16px" },
+              lineHeight: 1.7,
               fontStyle: "italic",
-              width: "39rem",
+              maxWidth: { xs: "320px", md: "500px" },
               mx: "auto",
               display: "block",
             }}
@@ -206,22 +210,50 @@ const Footer = () => {
             </MuiLink>
           </Typography>
 
-          <Typography variant="h4" sx={{ mt: 3, fontWeight: "bold" }}>
+          <Typography
+            sx={{
+              fontFamily: "Roboto, sans-serif",
+              fontSize: { xs: "20px", md: "24px" },
+              fontWeight: 700,
+              mt: { xs: 2, md: 3 },
+            }}
+          >
             #OpenToWork
           </Typography>
         </Box>
 
         {/* Bottom section */}
-        <Box sx={{ mt: 2, pb: 3, textAlign: "center" }}>
-          <Divider sx={{ bgcolor: "white", my: 2 }} />
-          <Grid
-            container
-            justifyContent="space-between"
-            sx={{ px: { xs: 2, md: 10 }, fontSize: 14 }}
+        <Box sx={{ mt: 2, pb: { xs: 2, md: 3 }, textAlign: "center" }}>
+          <Divider sx={{ bgcolor: "rgba(255,255,255,0.3)", my: 2 }} />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              justifyContent: "space-between",
+              alignItems: "center",
+              gap: { xs: 1, sm: 0 },
+              px: { xs: 2, md: 4 },
+              maxWidth: "900px",
+              mx: "auto",
+            }}
           >
-            <Grid item>Architect & Designer</Grid>
-            <Grid item>© 2021 Haribabu. All rights reserved.</Grid>
-          </Grid>
+            <Typography
+              sx={{
+                fontFamily: "Roboto, sans-serif",
+                fontSize: { xs: "12px", md: "13px" },
+              }}
+            >
+              UX Engineer & Designer
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: "Roboto, sans-serif",
+                fontSize: { xs: "12px", md: "13px" },
+              }}
+            >
+              © 2024 Haribabu. All rights reserved.
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </Box>
