@@ -57,7 +57,7 @@ const Navbar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
   const [scrolled, setScrolled] = useState(false);
-  const [isLightBackground, setIsLightBackground] = useState(true); // Default to light
+  const [isLightBackground, setIsLightBackground] = useState(false); // Default to dark (hero gradient)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [storytellerExpanded, setStorytellerExpanded] = useState(false);
   const hamburgerRef = useRef(null);
@@ -70,17 +70,24 @@ const Navbar = () => {
     const navbarRect = navbarRef.current.getBoundingClientRect();
     const scrollY = window.scrollY;
 
-    // The top portion of the page (hero + timeline) has light backgrounds
-    // Use a generous threshold - approximately 3.5 viewports to cover timeline
-    const lightSectionHeight = window.innerHeight * 3.5;
+    // Hero section has dark gradient background (roughly first 60% of viewport before white blob)
+    // After that, the white blob and timeline sections are light
+    const heroGradientEnd = window.innerHeight * 0.5; // Where gradient hero content ends
+    const lightSectionEnd = window.innerHeight * 4; // Approximate end of timeline section
 
-    if (scrollY < lightSectionHeight) {
-      // Hero and timeline sections have light/white backgrounds
+    if (scrollY < heroGradientEnd) {
+      // Top of hero with gradient - need light text on dark background
+      setIsLightBackground(false);
+      return;
+    }
+
+    if (scrollY < lightSectionEnd) {
+      // White blob and timeline sections - need dark text on light background
       setIsLightBackground(true);
       return;
     }
 
-    // Below the light sections, sample colors for detection
+    // Below the timeline, sample colors for detection
     const colors = sampleBackgroundColors(navbarRect);
 
     if (colors.length > 0) {
@@ -91,7 +98,7 @@ const Navbar = () => {
       return;
     }
 
-    // Fallback: assume dark background after the light sections
+    // Fallback: assume dark background after light sections
     setIsLightBackground(false);
   }, []);
 
